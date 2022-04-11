@@ -65,14 +65,20 @@ struct FActorProxy
 
 
 };
-
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class HELLONEIGHBOR2_API UInventoryComponent : public UBaseInventoryComponent
 {
 	GENERATED_BODY()
 		UFUNCTION(BlueprintCallable)
 		TArray<FActorProxy> GetItems();
-
+	UPROPERTY(BlueprintAssignable)
+		FMulticastInlineDelegate OnAddItem;
+	UPROPERTY(BlueprintAssignable)
+		FMulticastInlineDelegate OnRemoveItem;
+	UPROPERTY(BlueprintAssignable)
+		FMulticastInlineDelegate OnSelectSlot;
+	UPROPERTY(BlueprintAssignable)
+		FMulticastInlineDelegate OnUnSelectSlot;
 
 	UFUNCTION(BlueprintCallable)
 	FActorProxy GetCurrentItem();

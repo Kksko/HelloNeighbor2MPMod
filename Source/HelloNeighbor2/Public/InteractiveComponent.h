@@ -8,6 +8,8 @@
 #include "InteractiveComponent.generated.h"
 
 
+
+
 USTRUCT(BlueprintType)
 struct FPitchRange
 {
@@ -92,7 +94,7 @@ struct FHoldData
 };
 
 
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMulticastInlineDelegate);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class HELLONEIGHBOR2_API UInteractiveComponent : public UActorComponent
@@ -104,6 +106,9 @@ public:
 	UInteractiveComponent();
 	UPROPERTY(BlueprintReadWrite)
 		FHoldData HoldData;
+	UPROPERTY(BlueprintAssignable)
+		FMulticastInlineDelegate OnPickedUp;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
